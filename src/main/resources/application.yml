@@ -1,0 +1,5 @@
+# 日志相关配置
+logging:
+  level.root: debug
+  level.chou.may.mypakage: debug
+
