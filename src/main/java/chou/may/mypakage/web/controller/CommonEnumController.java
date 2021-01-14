@@ -32,7 +32,7 @@ public class CommonEnumController  implements ApplicationListener, ApplicationCo
     @Resource(name="webReturnEnumMap")
     private Map<String, List<Map<String, Object>>> webReturnEnumMap;
 
-    @GetMapping("/get-all")
+    @GetMapping("/get")
     public List<Map<String,Object>> listUserInfo(String code){
         return webReturnEnumMap.get(code);
     }

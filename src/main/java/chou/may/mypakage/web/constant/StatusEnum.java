@@ -1,6 +1,5 @@
 package chou.may.mypakage.web.constant;
 
-import chou.may.mypakage.web.annotation.EnumFieldWebReturn;
 import chou.may.mypakage.web.annotation.EnumWebReturn;
 
 /**
@@ -8,7 +7,7 @@ import chou.may.mypakage.web.annotation.EnumWebReturn;
  * @author lin.xc
  * @date 2020-07-03
  * */
-@EnumWebReturn("CommonIs")
+@EnumWebReturn(name = "CommonIs")
 public enum StatusEnum {
 
     SUCCESS("success","成功"),

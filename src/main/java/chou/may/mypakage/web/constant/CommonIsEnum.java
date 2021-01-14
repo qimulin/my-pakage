@@ -2,7 +2,6 @@ package chou.may.mypakage.web.constant;
 
 import chou.may.mypakage.web.annotation.EnumFieldWebReturn;
 import chou.may.mypakage.web.annotation.EnumWebReturn;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,16 +11,16 @@ import java.util.Map;
  * @author lin.xc
  * @date 2020-07-03
  * */
-@EnumWebReturn("CommonIs")
+@EnumWebReturn(name = "CommonIs")
 public enum CommonIsEnum {
 
     YES(1,"Y","是"),
     NO(0,"N","否");
 
-    @EnumFieldWebReturn("key")
+    @EnumFieldWebReturn(name = "key")
     private int code;
     private String value;
-    @EnumFieldWebReturn("value")
+    @EnumFieldWebReturn(name = "value")
     private String name;
 
     CommonIsEnum(int code, String value, String name) {

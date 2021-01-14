@@ -11,5 +11,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface EnumFieldWebReturn {
-    String value() default "";
+    String name() default "";
 }
