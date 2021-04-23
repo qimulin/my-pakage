@@ -18,6 +18,8 @@ public class TailorApiParamTreeNode {
 
     private Byte isLeaf;
 
+    private Byte parseType;
+
     private Integer parentId;
 
     /**
@@ -27,11 +29,13 @@ public class TailorApiParamTreeNode {
             Integer id,
             String name,
             Byte isLeaf,
+            Byte parseType,
             Integer parentId
     ){
         this.id = id;
         this.name = name;
         this.isLeaf = isLeaf;
+        this.parseType = parseType;
         this.parentId = parentId;
     }
 
@@ -42,7 +46,9 @@ public class TailorApiParamTreeNode {
         if (childrenNodes == null) {
             this.childrenNodes = new LinkedList<>();
         }
+        // 添加子节点
         childrenNodes.add(node);
         return this;
     }
+
 }

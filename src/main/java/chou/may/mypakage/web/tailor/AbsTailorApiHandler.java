@@ -1,8 +1,8 @@
 package chou.may.mypakage.web.tailor;
 
-import chou.may.mypakage.web.tailor.resolver.ResResolver;
+import chou.may.mypakage.web.tailor.resolver.TailorApiResResolver;
 import chou.may.mypakage.web.util.HttpClientUtils;
-import com.alibaba.fastjson.JSONObject;
+import chou.may.mypakage.web.util.LogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -15,22 +15,29 @@ import java.util.Map;
  **/
 public abstract class AbsTailorApiHandler {
 
-    Logger log = LoggerFactory.getLogger(AbsTailorApiHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(AbsTailorApiHandler.class);
 
-    /** 可以选择自行拼接url，不传params，也可以传params */
+    /** 可以选择自行拼接url，不传params，也可以传params, 定制接口通常是一组请求接口地址相同 */
     protected String url;
-    protected Map<String, String> header;
-    protected Map<String, String> params;
     /** 接口响应处理器 */
-    private ResResolver resResolver;
+    protected TailorApiResResolver resResolver;
 
     public AbsTailorApiHandler(
             String url,
-            ResResolver resResolver
+            TailorApiResResolver resResolver
     ){
+        Assert.hasText(url, "定制接口请求地址不能设置为空！");
+        Assert.notNull(resResolver, "定制接口响应解析器不能设置为空！");
         this.url = url;
         this.resResolver = resResolver;
         log.info("定制接口处理器选择的响应解析器为“{}”，说明：{}", resResolver.getName(), resResolver.getNote());
+    }
+
+    /**
+     * 获取响应解析器
+     * */
+    public TailorApiResResolver getTailorApiResResolver(){
+        return this.resResolver;
     }
 
     /**
@@ -42,42 +49,41 @@ public abstract class AbsTailorApiHandler {
     }
 
     /**
-     * 设置头部域
+     * Get请求
+     * @param params 请求参数
      * */
-    public void setHeader(Map<String, String> header){
-        this.header = header;
-    }
-
-    /**
-     * 设置参数
-     * */
-    public void setParams(Map<String, String> params){
-        this.params = params;
+    protected String get(
+            Map<String, String> params
+    ){
+        return get(null, params);
     }
 
     /**
      * Get请求
+     * @param header 头部域
+     * @param params 请求参数
      * */
-    protected String doGet(){
-        checkBeforeDoGet();
-        log.debug("定制接口GET请求地址：{}", this.url);
-        log.debug("定制接口GET请求头部域：{}", this.header);
-        log.debug("定制接口GET请求参数：{}", this.params);
-        String result = HttpClientUtils.doGetRequest(this.url, this.header, this.params);
+    protected String get(
+            Map<String, String> header,
+            Map<String, String> params
+    ){
+        if(log.isDebugEnabled()){
+            log.debug("定制接口GET请求地址：{}", this.url);
+            log.debug("定制接口GET请求头部域：{}", header);
+            log.debug("定制接口GET请求参数：{}", params);
+        }
+        String result = HttpClientUtils.doGetRequest(this.url, header, params);
         return result;
     }
 
     /**
-     * 执行Get并返回数据
+     * 请求并返回数据
+     * TODO：临时这样方便，后面参数有需要加header之类的具体再改造
      * */
-    public JSONObject doGetAndReturnData(){
-        String result = doGet();
-        log.debug("定制接口GET请求响应：{}", result);
-        return resResolver.resolveResDataToJson(result);
-    }
-
-    private void checkBeforeDoGet(){
-        Assert.hasText(this.url, "定制接口请求地址不可传空");
+    public String requestAndReturnDataStr(Map<String, String> params){
+        String responseStr = get(params);
+        LogUtils.logDebugIfEnableDebug(log,"定制接口GET请求响应：{}", responseStr);
+        return resResolver.checkAndGetEffectiveResDataStr(responseStr);
     }
 
 }

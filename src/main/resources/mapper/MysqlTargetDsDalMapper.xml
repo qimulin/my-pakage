@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chou.may.mypakage.web.dao.MysqlTargetDsDalMapper">
+
+    <select id="listDataSourceTableInfo" resultType="chou.may.mypakage.web.tailor.dto.TableSimpleInfoDto">
+        select
+        table_name AS name,
+        table_comment as comment
+        from information_schema.tables
+        <where>
+            and table_schema= #{dbName,jdbcType=VARCHAR}
+            and table_type='base table'
+            <if test="exceptTablePrefixArr !=null and exceptTablePrefixArr.length > 0">
+                <foreach collection="exceptTablePrefixArr" item = "exceptTablePrefix" index="index">
+                    and table_name not like concat(#{exceptTablePrefix,jdbcType=VARCHAR},'%')
+                </foreach>
+            </if>
+            <if test="tableName != null and tableName != '' ">
+                and table_name like concat('%',#{tableName,jdbcType=VARCHAR},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="countDataSourceTable" resultType="java.lang.Integer">
+        select count(1)
+        from information_schema.tables
+        <where>
+            and table_schema= #{dbName,jdbcType=VARCHAR}
+            and table_type='base table'
+            <if test="tableName != null and tableName != '' ">
+                and table_name = #{tableName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="listDataSourceTableColumnInfo" resultType="chou.may.mypakage.web.tailor.dto.TableColumnSimpleInfoDto">
+        SELECT
+            column_name as name,
+            column_comment as comment,
+            data_type as dataType
+        FROM information_schema.COLUMNS
+        WHERE table_schema = #{dbName, jdbcType=VARCHAR}
+        AND table_name = #{tableName, jdbcType=VARCHAR}
+        ORDER BY ORDINAL_POSITION
+    </select>
+
+    <!--
+        0、删除若存在该表
+        1、将Select的数据存到临时表
+        2、创建表结构拷贝临时表结构
+        3、插入临时表的数据到创建的表中
+        4、删除临时表
+    -->
+    <update id="createSelectByTemporaryTable">
+        drop table if exists ${tableName};
+        create temporary table ${tempTableName} ${selectSql};
+        create table ${tableName} like ${tempTableName};
+        insert into ${tableName} select * from ${tempTableName};
+        drop temporary table ${tempTableName}
+	</update>
+
+    <update id="copyTableAndData">
+        drop table if exists ${targetTableName};
+        create table ${targetTableName} like ${sourceTableName};
+        <if test="andData">
+            insert into ${targetTableName} select * from ${sourceTableName}
+        </if>
+	</update>
+
+    <update id="dropTableIfExists">
+        drop table if exists ${tableName};
+	</update>
+
+    <select id="countTableData" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM ${tableName}
+    </select>
+
+    <select id="pageTableData" resultType="java.util.Map" parameterType="String">
+		SELECT * FROM ${tableName}
+		LIMIT ${pageNo}, ${pageSize}
+	</select>
+
+    <select id="executeCountData" resultType="java.lang.Long" parameterType="String">
+	    ${countSql}
+	</select>
+
+    <select id="executeSelectData" resultType="java.util.Map" parameterType="String">
+	    ${selectSql}
+	</select>
+
+    <update id="executeDDL">
+        ${ddlSql}
+    </update>
+
+    <insert id="insertData" parameterType="java.util.Map">
+        INSERT INTO ${tableName}
+        (
+            <foreach collection="data" item="value" index="key" separator=",">
+                `${key}`
+            </foreach>
+        )
+        VALUES
+        (
+            <foreach collection="data" item="value" index="key" separator=",">
+                #{value}
+            </foreach>
+        )
+    </insert>
+
+    <insert id="insertDataList" parameterType="java.util.Map">
+        <foreach collection="dataList" item="data" separator=";">
+            INSERT INTO ${tableName}
+            (
+            <foreach collection="data" item="value" index="key" separator=",">
+                `${key}`
+            </foreach>
+            )
+            VALUES
+            (
+            <foreach collection="data" item="value" index="key" separator=",">
+                #{value}
+            </foreach>
+            )
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertDataList" parameterType="java.util.Map">
+        INSERT INTO ${tableName}
+        (
+            <foreach collection="dataList.get(0)" item="value" index="key" separator=",">
+                `${key}`
+            </foreach>
+        )
+        VALUES
+        <foreach collection="dataList" item="data" separator=",">
+        (
+            <foreach collection="data" item="value" index="key" separator=",">
+                #{value}
+            </foreach>
+        )
+        </foreach>
+    </insert>
+
+    <select id="selectDataByCond" resultType="java.util.Map">
+	    SELECT
+        <choose>
+            <when test="selectColName != null and selectColName.size > 0">
+                <foreach collection="selectColName" item="colName" separator=",">
+                    `${colName}`
+                </foreach>
+            </when>
+            <otherwise>
+                *
+            </otherwise>
+        </choose>
+        FROM ${tableName}
+        <where>
+            <foreach collection="condColNameWithValue" item="value" index="key" separator="AND">
+                `${key}` = #{value}
+            </foreach>
+        </where>
+	</select>
+
+</mapper>

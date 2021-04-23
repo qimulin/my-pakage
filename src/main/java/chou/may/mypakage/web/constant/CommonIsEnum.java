@@ -14,17 +14,19 @@ import java.util.Map;
 @EnumWebReturn(name = "CommonIs")
 public enum CommonIsEnum {
 
-    YES(1,"Y","是"),
-    NO(0,"N","否");
+    YES(1, (byte)1,"Y","是"),
+    NO(0, (byte)0,"N","否");
 
     @EnumFieldWebReturn(name = "key")
     private int code;
+    private byte tinyCode;
     private String value;
     @EnumFieldWebReturn(name = "value")
     private String name;
 
-    CommonIsEnum(int code, String value, String name) {
+    CommonIsEnum(int code, byte tinyCode, String value, String name) {
         this.code = code;
+        this.tinyCode = tinyCode;
         this.value = value;
         this.name = name;
     }
@@ -37,6 +39,10 @@ public enum CommonIsEnum {
     }
     public int getCode() {
         return this.code;
+    }
+
+    public byte getTinyCode() {
+        return this.tinyCode;
     }
 
     public String getValue() {
