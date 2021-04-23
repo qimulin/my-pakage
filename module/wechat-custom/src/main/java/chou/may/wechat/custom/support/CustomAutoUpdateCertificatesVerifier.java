@@ -102,6 +102,15 @@ public class CustomAutoUpdateCertificatesVerifier implements Verifier {
   }
 
   /**
+   * TODO：原来的0.1.5没有这个接口方法，但是一直依赖不到，不知道是不是去掉了
+   * TODO：现引0.2.0，需要实现该方法，但是我还没详细看过0.2.0的代码，所以只是为了编译不报错，先这样处理
+   * */
+  @Override
+  public X509Certificate getValidCertificate() {
+    return null;
+  }
+
+  /**
    * 检查自动更新
    * */
   private void checkAutoUpdateCert(){

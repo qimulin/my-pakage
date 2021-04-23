@@ -2,7 +2,7 @@ package chou.may.mypakage.web.util;
 
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
