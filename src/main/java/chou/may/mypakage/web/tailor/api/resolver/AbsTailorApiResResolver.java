@@ -1,7 +1,7 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
-import chou.may.mypakage.web.tailor.DataTypeEnum;
-import chou.may.mypakage.web.tailor.TailorApiParamTreeNode;
+import chou.may.mypakage.web.tailor.api.DataTypeEnum;
+import chou.may.mypakage.web.tailor.api.TailorApiParamTreeNode;
 import org.springframework.util.Assert;
 
 import java.util.List;

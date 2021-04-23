@@ -1,7 +1,7 @@
 package chou.may.mypakage.web.dao;
 
-import chou.may.mypakage.web.tailor.dto.TableColumnSimpleInfoDto;
-import chou.may.mypakage.web.tailor.dto.TableSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableColumnSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableSimpleInfoDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

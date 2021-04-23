@@ -1,6 +1,6 @@
-package chou.may.mypakage.web.tailor;
+package chou.may.mypakage.web.tailor.api;
 
-import chou.may.mypakage.web.tailor.resolver.TailorApiResResolver;
+import chou.may.mypakage.web.tailor.api.resolver.TailorApiResResolver;
 import chou.may.mypakage.web.util.HttpClientUtils;
 import chou.may.mypakage.web.util.LogUtils;
 import org.slf4j.Logger;

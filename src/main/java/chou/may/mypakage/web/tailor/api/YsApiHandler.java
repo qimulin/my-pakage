@@ -1,7 +1,7 @@
-package chou.may.mypakage.web.tailor;
+package chou.may.mypakage.web.tailor.api;
 
 import chou.may.mypakage.web.service.AuxTableInfoService;
-import chou.may.mypakage.web.tailor.resolver.TailorApiResResolver;
+import chou.may.mypakage.web.tailor.api.resolver.TailorApiResResolver;
 import chou.may.mypakage.web.util.LogUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;

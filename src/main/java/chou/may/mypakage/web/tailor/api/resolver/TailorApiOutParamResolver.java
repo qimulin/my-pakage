@@ -1,4 +1,4 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
 import java.util.List;
 import java.util.Map;

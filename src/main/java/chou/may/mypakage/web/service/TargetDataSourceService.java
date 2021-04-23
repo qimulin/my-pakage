@@ -1,7 +1,7 @@
 package chou.may.mypakage.web.service;
 
-import chou.may.mypakage.web.tailor.dto.TableColumnSimpleInfoDto;
-import chou.may.mypakage.web.tailor.dto.TableSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableColumnSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableSimpleInfoDto;
 import org.springframework.lang.Nullable;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package chou.may.mypakage.web.service;
 
-import chou.may.mypakage.web.tailor.dto.AuxTableInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.AuxTableInfoDto;
 
 import java.util.List;
 import java.util.Map;

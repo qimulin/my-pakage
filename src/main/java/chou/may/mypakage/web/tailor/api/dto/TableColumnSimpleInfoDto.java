@@ -1,4 +1,4 @@
-package chou.may.mypakage.web.tailor.dto;
+package chou.may.mypakage.web.tailor.api.dto;
 
 import lombok.Data;
 

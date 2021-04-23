@@ -2,8 +2,8 @@ package chou.may.mypakage.web.service.impl;
 
 import chou.may.mypakage.web.dao.MysqlTargetDsDalMapper;
 import chou.may.mypakage.web.service.TargetDataSourceService;
-import chou.may.mypakage.web.tailor.dto.TableColumnSimpleInfoDto;
-import chou.may.mypakage.web.tailor.dto.TableSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableColumnSimpleInfoDto;
+import chou.may.mypakage.web.tailor.api.dto.TableSimpleInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

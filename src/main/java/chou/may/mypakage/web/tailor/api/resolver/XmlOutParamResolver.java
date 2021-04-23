@@ -1,7 +1,7 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
-import chou.may.mypakage.web.tailor.TailorApiParamTreeNode;
-import chou.may.mypakage.web.tailor.exception.ResolveErrorException;
+import chou.may.mypakage.web.tailor.api.TailorApiParamTreeNode;
+import chou.may.mypakage.web.tailor.api.exception.ResolveErrorException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;

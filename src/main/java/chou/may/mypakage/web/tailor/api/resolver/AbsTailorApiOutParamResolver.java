@@ -1,8 +1,8 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
 import chou.may.mypakage.web.constant.CommonIsEnum;
-import chou.may.mypakage.web.tailor.ParamParseTypeEnum;
-import chou.may.mypakage.web.tailor.TailorApiParamTreeNode;
+import chou.may.mypakage.web.tailor.api.ParamParseTypeEnum;
+import chou.may.mypakage.web.tailor.api.TailorApiParamTreeNode;
 import chou.may.mypakage.web.util.MapUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.util.Assert;

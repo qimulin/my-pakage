@@ -1,7 +1,7 @@
-package chou.may.mypakage.web.tailor.builder;
+package chou.may.mypakage.web.tailor.api.builder;
 
 import chou.may.mypakage.web.constant.CommonIsEnum;
-import chou.may.mypakage.web.tailor.TailorApiParamTreeNode;
+import chou.may.mypakage.web.tailor.api.TailorApiParamTreeNode;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.Assert;
 

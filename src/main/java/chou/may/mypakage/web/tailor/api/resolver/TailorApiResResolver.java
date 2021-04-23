@@ -1,6 +1,6 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
-import chou.may.mypakage.web.tailor.DataTypeEnum;
+import chou.may.mypakage.web.tailor.api.DataTypeEnum;
 
 import java.util.List;
 import java.util.Map;

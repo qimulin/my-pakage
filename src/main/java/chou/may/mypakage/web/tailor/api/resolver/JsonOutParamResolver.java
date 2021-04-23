@@ -1,6 +1,6 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
-import chou.may.mypakage.web.tailor.TailorApiParamTreeNode;
+import chou.may.mypakage.web.tailor.api.TailorApiParamTreeNode;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;

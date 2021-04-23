@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="chou.may.mypakage.web.dao.MysqlTargetDsDalMapper">
 
-    <select id="listDataSourceTableInfo" resultType="chou.may.mypakage.web.tailor.dto.TableSimpleInfoDto">
+    <select id="listDataSourceTableInfo" resultType="chou.may.mypakage.web.tailor.api.dto.TableSimpleInfoDto">
         select
         table_name AS name,
         table_comment as comment
@@ -33,7 +33,7 @@
         </where>
     </select>
 
-    <select id="listDataSourceTableColumnInfo" resultType="chou.may.mypakage.web.tailor.dto.TableColumnSimpleInfoDto">
+    <select id="listDataSourceTableColumnInfo" resultType="chou.may.mypakage.web.tailor.api.dto.TableColumnSimpleInfoDto">
         SELECT
             column_name as name,
             column_comment as comment,

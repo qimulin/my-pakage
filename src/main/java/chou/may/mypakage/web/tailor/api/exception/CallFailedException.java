@@ -1,4 +1,4 @@
-package chou.may.mypakage.web.tailor.exception;
+package chou.may.mypakage.web.tailor.api.exception;
 
 /**
  * 接口调用失败

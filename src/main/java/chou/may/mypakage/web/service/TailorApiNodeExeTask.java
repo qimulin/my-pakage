@@ -1,7 +1,7 @@
 package chou.may.mypakage.web.service;
 
-import chou.may.mypakage.web.tailor.AbsTailorApiHandler;
-import chou.may.mypakage.web.tailor.builder.TailorApiInParamBuilder;
+import chou.may.mypakage.web.tailor.api.AbsTailorApiHandler;
+import chou.may.mypakage.web.tailor.api.builder.TailorApiInParamBuilder;
 import com.alibaba.fastjson.JSONArray;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;

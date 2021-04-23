@@ -1,4 +1,4 @@
-package chou.may.mypakage.web.tailor;
+package chou.may.mypakage.web.tailor.api;
 
 import java.util.HashMap;
 import java.util.Map;

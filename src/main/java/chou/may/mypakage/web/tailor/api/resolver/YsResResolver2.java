@@ -1,8 +1,8 @@
-package chou.may.mypakage.web.tailor.resolver;
+package chou.may.mypakage.web.tailor.api.resolver;
 
-import chou.may.mypakage.web.tailor.DataTypeEnum;
-import chou.may.mypakage.web.tailor.exception.CallFailedException;
-import chou.may.mypakage.web.tailor.exception.ReturnDataErrorException;
+import chou.may.mypakage.web.tailor.api.DataTypeEnum;
+import chou.may.mypakage.web.tailor.api.exception.CallFailedException;
+import chou.may.mypakage.web.tailor.api.exception.ReturnDataErrorException;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
