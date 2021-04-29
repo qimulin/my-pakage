@@ -326,6 +326,7 @@ public class TailorApiNodeExeServiceImpl implements TailorApiNodeExeService {
     ){
         TailorApiCategoryEnum categoryEnum = TailorApiCategoryEnum.of(tailorApi.getCategory());
         log.info("获取接口处理器类别为：{}", categoryEnum.getDesc());
+        // 采用设计模式之策略模式，选择不同的ApiHandler，调用其请求方法
         switch (categoryEnum){
             case YS:
                 YsApiHandler ysApiHandler = new YsApiHandler(tailorApi.getRequestUrl(), tailorApiResResolver);

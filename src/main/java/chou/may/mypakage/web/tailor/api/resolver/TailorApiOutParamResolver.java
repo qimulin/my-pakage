@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * API输出参数处理器
+ * 设计模型之策略模式
  * @author lin.xc
  * @date 2021/4/14
  **/

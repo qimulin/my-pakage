@@ -11,6 +11,7 @@ import java.util.*;
 
 /**
  * 有数接口输出参数辅助器
+ * 本抽象类中多个抽象方法（钩子方法）需要子类去实现，采用设计模式之模板方法
  * @author lin.xc
  * @date 2021/4/14
  **/
@@ -98,7 +99,6 @@ public abstract class AbsTailorApiOutParamResolver<E> implements TailorApiOutPar
         for(TailorApiParamTreeNode childNode: childrenNodes){
             // 叶子节点先作为属性处理
             if(CommonIsEnum.YES.getTinyCode()==childNode.getIsLeaf()){
-                // TODO：嫌麻烦，都转成字符串
                 Object outParamValue = getLeafChildNodeValue(currElement, childNode.getName());
                 leafParamIdWithValueMap.put(childNode.getId(), outParamValue);
             }else{

@@ -22,6 +22,7 @@ public abstract class AbsTailorApiHandler {
     /** 接口响应处理器 */
     protected TailorApiResResolver resResolver;
 
+    /** 采用设计模型建造者模式，将定制接口解析器传入，并方法内调用其解析实现 */
     public AbsTailorApiHandler(
             String url,
             TailorApiResResolver resResolver
